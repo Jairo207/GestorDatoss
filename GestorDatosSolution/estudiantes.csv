@@ -1,0 +1,6 @@
+Nombre,Edad,Correo,Nota1,Nota2,Nota3,Promedio,Estado,Genero,Actividades
+Ana Pérez,20,anaperez@gmail.com,4.0,3.5,4.5,4.00,Aprobado,Femenino,Deportes;Música
+Luis Gómez,22,luisgomez@outlook.com,2.5,3.0,2.8,2.77,Reprobado,Masculino,Arte
+María López,19,marialopez@gmail.com,5.0,4.8,4.6,4.80,Aprobado,Femenino,Deportes
+Carlos Ruiz,21,carlosruiz@hotmail.com,3.2,2.9,3.5,3.20,Aprobado,Masculino,Música;Arte
+Sofía Martínez,23,sofiamartinez@gmail.com,2.0,2.5,2.8,2.43,Reprobado,Femenino,
