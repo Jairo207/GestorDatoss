@@ -1,0 +1,2 @@
+# GestorDatoss
+Parcial
