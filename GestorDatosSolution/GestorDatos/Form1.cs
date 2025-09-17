@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;  // al inicio del archivo
+using System.Globalization;  
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -19,10 +19,8 @@ namespace GestorDatos
     public partial class Form1 : Form
     {
         private string rutaAdjunto = null;
-        // arreglo bidimensional en memoria
         private string[,] estudiantesArray = new string[0, 0];
 
-        // Convierte DataTable a arreglo 2D
         private string[,] DataTableTo2DArray(System.Data.DataTable dt)
         {
             if (dt == null || dt.Columns.Count == 0) return new string[0, 0];
@@ -35,7 +33,6 @@ namespace GestorDatos
             return arr;
         }
 
-        // Convierte arreglo 2D a lista (para guardar CSV)
         private List<string[]> TwoDArrayToList(string[,] arr)
         {
             var list = new List<string[]>();
@@ -72,7 +69,6 @@ namespace GestorDatos
                 dgvDatos.DataSource = dt;
                 Log($"Cargado {Path.GetFileName(ruta)} con {dt.Rows.Count} filas.");
 
-                // sincronizar arreglo
                 estudiantesArray = DataTableTo2DArray(dt);
             }
             catch (Exception ex)
@@ -157,14 +153,11 @@ namespace GestorDatos
         {
             if (dgvDatos.CurrentRow == null) return;
 
-            var r = dgvDatos.CurrentRow;  // ← aquí defines la fila actual
-
-            // Datos básicos
+            var r = dgvDatos.CurrentRow;  
             txtNombre.Text = GetCellValue(r, "Nombre");
             txtEdad.Text = GetCellValue(r, "Edad");
             txtCorreo.Text = GetCellValue(r, "Correo");
 
-            // Calcular promedio buscando cualquier columna que contenga "Nota"
             double suma = 0; int cuenta = 0;
             foreach (DataGridViewColumn col in dgvDatos.Columns)
             {
@@ -273,7 +266,6 @@ namespace GestorDatos
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            // Validar datos
             string nombre = txtRegNombre.Text.Trim();
             if (string.IsNullOrEmpty(nombre)) { MessageBox.Show("Ingrese el nombre."); return; }
 
@@ -303,7 +295,6 @@ namespace GestorDatos
             double promedio = Math.Round((n1 + n2 + n3) / 3.0, 2);
             string estado = promedio >= 3.0 ? "Aprobado" : "Reprobado";
 
-            // correo generado (si no tienes txtRegCorreo)
             string correo = nombre.ToLower().Replace(" ", "") + "@ejemplo.com";
 
             var fila = new string[] {
@@ -332,3 +323,4 @@ namespace GestorDatos
         }
     }
 }
+
